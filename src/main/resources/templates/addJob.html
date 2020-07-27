@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <div th:replace="base :: metaTags"></div>
+
+    <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
+    <title>Adding Job | Craigslist</title>
+</head>
+<body>
+
+<div th:replace="base :: navBar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Add a Job</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <form th:action="@{/processJob}" th:object="${job}" method="post">
+
+                <input type="hidden" th:field="*{id}"/>
+                Title: <input type="text" th:field="*{title}"/> <br/>
+                <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span> <br>
+
+                Description: <input type="text" th:field="*{description}"/> <br/>
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span> <br>
+
+                Posted Date: <input type="text" th:field="*{postedDate}">
+                <span th:if="${#fields.hasErrors('postedDate')}" th:errors="*{postedDate}"></span> <br>
+
+                Position Type (ex. Full time, part time, etc.): <input type="text" th:field="*{positionType}">
+                <span th:if="${#fields.hasErrors('positionType')}" th:errors="*{positionType}"></span> <br>
+
+                Job location: <input type="text" th:field="*{location}">
+                <span th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></span> <br>
+
+                <input type="hidden" th:field="*{user.id}" th:value=1>
+<!--                <input type="hidden" th:field="*{user.id}" th:value="${currentUserId}">-->
+                <!--            <select th:field="*{customer.id}">-->
+                <!--                <option th:each="cust : ${customers}"-->
+                <!--                        th:value="${cust.id}"-->
+                <!--                        th:text="${cust.name}"></option>-->
+                <!--            </select>-->
+
+                <br/>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div th:replace="base :: footer"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div th:replace="base :: BootStrapScripts"></div>
+</body>
+</html>

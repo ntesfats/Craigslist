@@ -1,0 +1,13 @@
+thml, body {
+    background-color: #f6f6f6;
+}
+
+a {
+    text-decoration: none;
+    cursor:pointer;
+    color: white;
+}
+
+footer {
+    text-align: center;
+}

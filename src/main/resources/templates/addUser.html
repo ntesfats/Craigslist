@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <div th:replace="base :: metaTags"></div>
+
+    <div th:replace="base :: BootStrapAndMainCSSLinks"></div>
+    <title>Adding User | Craigslist</title>
+</head>
+<body>
+
+<div th:replace="base :: navBar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Adding a User...</h2>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <form th:action="@{/processUser}" th:object="${user}" method="post">
+                <fieldset>
+                    <legend>Personal Info.:</legend>
+                    <input type="hidden" th:field="*{id}"/>
+                    First Name: <input type="text" th:field="*{firstName}"/> <br/>
+                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span> <br>
+
+                    Last Name: <input type="text" th:field="*{lastName}"/> <br/>
+                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span> <br>
+
+                    Phone Number: <input type="text" th:field="*{phoneNumber}">
+                    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span> <br>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        Account Registration:
+                    </legend>
+
+                    UserName: <input type="text" th:field="*{userName}">
+                    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span> <br>
+
+                    Password: <input type="password" th:field="*{password}">
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span> <br>
+                </fieldset>
+
+                <br/>
+                <input type="submit" value="Register">
+
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div th:replace="base :: footer"></div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="base :: BootStrapScripts"></div>
+</body>
+</html>
